@@ -19,7 +19,7 @@ pipeline {
         sh "docker push prii1812/request-logger:${env.GIT_COMMIT}"
         sh "docker push prii1812/request-logger:latest"
         sh "kubectl get deploy logger || kubectl create deploy logger --image prii1812/request-logger:${env.GIT_COMMIT}"
-        sh "kubectl set image deploy logger request-logger=brainupgrade/request-logger:${env.GIT_COMMIT}"
+        sh "kubectl set image deploy logger request-logger=prii1812/request-logger:${env.GIT_COMMIT}"
         sh "kubectl set env deploy logger  BUILD_ID=${env.BUILD_ID}"
       }
     }
